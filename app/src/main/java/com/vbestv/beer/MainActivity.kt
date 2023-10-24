@@ -17,7 +17,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.findBeer.setOnClickListener {
-            binding.textView.text = "Beer color is ${binding.beerColor.selectedItem}"
+            binding.textView.text = "Beer color is ${binding.beerColor.selectedItem} : \n ${getBeers(
+                binding.beerColor.selectedItem as String
+            )}"
+        }
+    }
+    fun getBeers(color:String):List<String>{
+        return when (color){
+            "Light" -> listOf("Jail Pale Ale", "Lager Lite")
+            "Amber" -> listOf("Jack Amber", "Red Moose")
+            "Brown" -> listOf("Brown Bear Beer", "Bock Brownie")
+            else -> listOf("Gout Stout", "Dark Daniel")
         }
     }
 }
